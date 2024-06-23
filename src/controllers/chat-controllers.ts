@@ -69,7 +69,7 @@ export const sendChatsToUser = async (req: Request, res: Response, next: NextFun
         return res.status(200).json({ message: "OK",chats:user.chats});
     } catch (error) {
         console.log(error);
-        return res.status(200).json({ message: "ERROR" ,cause:error.message });           
+        return res.status(200).json({ message: "ERROR" ,cause:error });           
     }
 };
 
@@ -94,6 +94,6 @@ export const deletsChats = async (req: Request, res: Response, next: NextFunctio
         return res.status(200).json({ message: "OK"});
     } catch (error) {
         console.log(error);
-        return res.status(200).json({ message: "ERROR" ,cause:error.message });           
+        return res.status(200).json({ message: "ERROR" ,cause: error});           
     }
 };

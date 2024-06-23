@@ -11,7 +11,7 @@ export const getAllUsers = async (req: Request, res: Response, next: NextFunctio
         return res.status(200).json({ message: "OK", users });
     } catch (error) {
         console.log(error);
-        return res.status(500).json({ message: "Internal server error", cause: error.message });
+        return res.status(500).json({ message: "Internal server error", cause: error });
         
     }
 };
@@ -50,10 +50,10 @@ export const userSignup = async (req: Request, res: Response, next: NextFunction
         return res.status(201).json({ message: "OK", name:user.name, email: user.email });
     } catch (error) {
         console.log(error);
-if (error.code === 11000) {
+if (error === 11000) {
         return res.status(400).json({ message: "Email address already in use" });
     } else {
-        return res.status(500).json({ message: "Internal server error", cause: error.message });
+        return res.status(500).json({ message: "Internal server error", cause: error });
     }        
     }
 };
@@ -100,7 +100,7 @@ export const userLogin = async (
       .json({ message: "OK", name: user.name, email: user.email });
   } catch (error) {
     console.log(error);
-    return res.status(200).json({ message: "ERROR", cause: error.message });
+    return res.status(200).json({ message: "ERROR", cause: error });
   }
 };
 
@@ -124,7 +124,7 @@ export const verifyUser = async (req: Request, res: Response, next: NextFunction
         return res.status(200).json({ message: "OK",name:user.name, email: user.email });
     } catch (error) {
         console.log(error);
-        return res.status(200).json({ message: "ERROR" ,cause:error.message });           
+        return res.status(200).json({ message: "ERROR" ,cause:error });           
     }
 };
 
@@ -154,6 +154,6 @@ export const userLogout = async (req: Request, res: Response, next: NextFunction
         return res.status(200).json({ message: "OK",name:user.name, email: user.email });
     } catch (error) {
         console.log(error);
-        return res.status(200).json({ message: "ERROR" ,cause:error.message });           
+        return res.status(200).json({ message: "ERROR" ,cause:error });           
     }
 };
